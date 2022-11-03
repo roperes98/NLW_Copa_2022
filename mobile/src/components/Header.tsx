@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Text, HStack, Box } from 'native-base';
 import { CaretLeft, Export } from 'phosphor-react-native';
 
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export function Header({ title, showBackButton = false, showShareButton = false }: Props) {
+  const { navigate } = useNavigation()
+
   const EmptyBoxSpace = () => (<Box w={6} h={6} />);
 
   return (
@@ -28,7 +31,7 @@ export function Header({ title, showBackButton = false, showShareButton = false 
         {
           showShareButton
             ?
-            <ButtonIcon icon={Export} />
+            <ButtonIcon icon={Export} onPress={() => navigate('polls')} />
             :
             <EmptyBoxSpace />
         }
